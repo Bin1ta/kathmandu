@@ -23,8 +23,7 @@ return new class extends Migration
             $table->boolean('is_displayed')->default(false);
             $table->string('ward')->nullable();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-
-            // $table->foreignId('hall_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('hall_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

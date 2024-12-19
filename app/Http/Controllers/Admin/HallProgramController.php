@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hall;
 use App\Models\HallProgram;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,9 @@ class HallProgramController extends Controller
      */
     public function create()
     {
-        return view('admin.hallProgram.create');
+        // $this->checkAuthorization('hall_program_create');
+        $halls=Hall::latest()->get();
+        return view('admin.hallProgram.create',compact('halls'));
     }
 
     /**

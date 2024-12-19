@@ -47,4 +47,8 @@ class HallProgram extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function hall(): BelongsTo
+    {
+        return $this->belongsTo(Hall::class);
+    }
 }

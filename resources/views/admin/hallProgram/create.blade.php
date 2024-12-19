@@ -12,7 +12,7 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{route('admin.notice.index',$type)}}">सूचना </a>
+                            <a href="{{route('admin.hallProgram.index')}}">सूचना </a>
                         </li>
                         <li class="breadcrumb-item active">नयाँ सूचना थप्नुहोस्</li>
                     </ol>
@@ -43,49 +43,88 @@
                             </legend>
                             <div class="row">
                                 <div class="col-md-6 mb-2">
-                                    <label for="title" class="form-label">शिर्षक *</label>
+                                    <label for="title" class="form-label"> कार्यक्रमको नाम *</label>
                                     <input
                                             type="text"
-                                            name="title"
-                                            value="{{old('title')}}"
-                                            class="form-control @error('title') is-invalid @enderror"
-                                            id="title"
+                                            name="program_name"
+                                            value="{{old('program_name')}}"
+                                            class="form-control @error('program_name') is-invalid @enderror"
+                                            id="program_name"
                                             placeholder="शिर्षक "
                                             required
                                     />
-                                    @error('title')
+                                    @error('program_name')
                                     <div class="invalid-feedback">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-2">
-                                    <x-date-input-component
-                                            label-ne="मिति *" name-ne="date"
+                                    <label for="title" class="form-label"> कार्यक्रमको मिति *</label>
+                                    <input
+                                            type="text"
+                                            name="program_date"
+                                            value="{{old('program_date')}}"
+                                            class="form-control @error('program_date') is-invalid @enderror"
+                                            id="program_date"
+                                            placeholder="मिति"
+                                            required
                                     />
+                                    @error('program_date')
+                                    <div class="invalid-feedback">{{$message}}</div>
+                                    @enderror
                                 </div>
+
                                 <div class="col-md-12 mb-2">
-                                    <label for="description" class="form-label">बिवरण </label>
-                                    <textarea name="description" id="description" placeholder="बिवरण"
+                                    <label for="program_detail" class="form-label">कार्यक्रम बिवरण </label>
+                                    <textarea name="program_detail" id="program_detail" placeholder="कार्यक्रम बिवरण"
                                               class="form-control summernote" cols="30"
-                                              rows="5">{{old('description')}}</textarea>
-                                    @error('description')
+                                              rows="5">{{old('program_detail')}}</textarea>
+                                    @error('program_detail')
+                                    <div class="invalid-feedback">{{$message}}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-2">
+                                    <label for="title" class="form-label"> कार्यक्रमको हुने समय (देखि) *</label>
+                                    <input
+                                            type="text"
+                                            name="program_time_to"
+                                            value="{{old('program_time_to')}}"
+                                            class="form-control @error('program_time_to') is-invalid @enderror"
+                                            id="program_time_to"
+                                            placeholder="मिति"
+                                            required
+                                    />
+                                    @error('program_time_to')
+                                    <div class="invalid-feedback">{{$message}}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="title" class="form-label"> कार्यक्रमको हुने समय (सम्म) *</label>
+                                    <input
+                                            type="text"
+                                            name="program_time_from"
+                                            value="{{old('program_time_from')}}"
+                                            class="form-control @error('program_time_from') is-invalid @enderror"
+                                            id="program_time_from"
+                                            placeholder="मिति"
+                                            required
+                                    />
+                                    @error('program_time_from')
                                     <div class="invalid-feedback">{{$message}}</div>
                                     @enderror
                                 </div>
 
                                 <div class="col-md-4 mb-2">
-                                    <label for="files" class="form-label">फाईल </label>
-                                    <input
-                                            type="file"
-                                            name="files[]"
-                                            class="form-control @error('files') is-invalid @enderror"
-                                            id="files"
+                                    <label for="branch_id" class="form-label"> हल</label>
+                                    <select name="branch_id" id="branch_id" class="form-select @error('branch_id') is-invalid @enderror">
+                                        <option value="">हल छान्नुहोस्</option>
+                                        @foreach ($halls as $hall)
+                                            <option value="{{ $hall->id }}" {{ old('hall_id') == $hall->id ? 'selected':'' }}>{{ $hall->title }}</option>
+                                        @endforeach
 
-                                            multiple/>
-                                    @error('files')
-                                    <div class="invalid-feedback">{{$message}}</div>
-                                    @enderror
-                                    @error('files.*')
-                                    <div class="invalid-feedback">{{$message}}</div>
+                                    </select>
+                                    @error('hall_id')
+                                        <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
 
@@ -116,6 +155,16 @@
                                     <label for="is_displayed" class="form-label">पालिकामा पनि देखाउनु होस्</label>
 
                                     @error('is_displayed')
+                                    <div class="invalid-feedback">{{$message}}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 mb-2">
+                                    <label for="remark" class="form-label">कैफियत</label>
+                                    <textarea name="remark" id="remark" placeholder="कैफियत"
+                                              class="form-control summernote" cols="30"
+                                              rows="5">{{old('remark')}}</textarea>
+                                    @error('remark')
                                     <div class="invalid-feedback">{{$message}}</div>
                                     @enderror
                                 </div>
