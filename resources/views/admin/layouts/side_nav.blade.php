@@ -33,15 +33,15 @@
                         </a>
                     </li>
                 @endcan
-{{--
-                @can('hall_program_access') --}}
+
+                @can('hall_program_access')
                     <li class="{{ request()->routeIs('admin.hallProgram.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.hallProgram.index') }}">
                             <i class="fa fa-info-circle"></i>
                             <span> Hall Program </span>
                         </a>
                     </li>
-                {{-- @endcan --}}
+                @endcan
 
                 <li class="{{ request()->is('admin/setting/userManagement/*') ? 'active' : '' }}">
                     <a href="#userManagement"
@@ -81,9 +81,7 @@
                         <span> नागरिक वडापत्र</span>
                     </a>
                 </li>
-                <li class="{{ request()->routeIs('admin.header.*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.header.index') }}">
-                </li>
+
                 @can('hall_access')
                 <li class="{{request()->routeIs('admin.hall.*') ? 'active' : ''}}">
                     <a href="{{route('admin.hall.index')}}">
