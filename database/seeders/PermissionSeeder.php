@@ -47,6 +47,10 @@ class PermissionSeeder extends Seeder
             'popup_create',
             'popup_edit',
             'popup_delete',
+            'hall_program_access',
+            'hall_program_create',
+            'hall_program_edit',
+            'hall_program_delete',
 
         ];
 
