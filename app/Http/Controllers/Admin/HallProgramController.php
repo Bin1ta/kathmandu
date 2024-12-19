@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HallProgram\StoreHallProgramRequest;
+use App\Http\Requests\HallProgram\UpdateHallProgramRequest;
 use App\Models\Hall;
 use App\Models\HallProgram;
 use Illuminate\Http\Request;
@@ -14,7 +16,7 @@ class HallProgramController extends Controller
      */
     public function index()
     {
-        // $this->checkAuthorization('hall_program_access');
+        $this->checkAuthorization('hall_program_access');
 
         $hallPrograms = HallProgram::
           where(function ($q) {
@@ -32,7 +34,7 @@ class HallProgramController extends Controller
      */
     public function create()
     {
-        // $this->checkAuthorization('hall_program_create');
+        $this->checkAuthorization('hall_program_create');
         $halls=Hall::latest()->get();
         return view('admin.hallProgram.create',compact('halls'));
     }
@@ -40,40 +42,58 @@ class HallProgramController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreHallProgramRequest $request)
     {
-        //
+        HallProgram::create($request->validated() + ['ward'=>auth()->user()->ward_no,'user_id'=>auth()->user()->id]);
+        toast('हल कार्यक्रमको थपियो', 'success');
+        return to_route('admin.hallProgram.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(HallProgram $hallProgram)
     {
-        //
+        return view('admin.hallProgram.show',compact('hallProgram'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(HallProgram $hallProgram)
     {
-        //
+        $this->checkAuthorization('hall_program_edit');
+        $hallProgram->load('hall');
+        return view('admin.hallProgram.edit', compact('hallProgram'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateHallProgramRequest $request, HallProgram $hallProgram)
     {
-        //
+
+        $hallProgram->update($request->validated());
+        toast('हल कार्यक्रमको थपियो', 'success');
+        return to_route('admin.hallProgram.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(HallProgram $hallProgram)
     {
-        //
+        $hallProgram->delete();
+        toast('हल कार्यक्रमको थपियो', 'success');
+        return back();
+    }
+    public function updateStatus(HallProgram $hallProgram)
+    {
+        $hallProgram->update([
+            'status' => !$hallProgram->status,
+        ]);
+        toast('स्थिति सफलतापूर्वक अद्यावधिक गरियो', 'success');
+
+        return back();
     }
 }

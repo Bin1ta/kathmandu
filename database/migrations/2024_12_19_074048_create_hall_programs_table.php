@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('program_date');
             $table->string('program_time_to');
             $table->string('program_time_from');
-            $table->longText('remarks');
+            $table->longText('remarks')->nullable();
             $table->boolean('status')->default(true);
             $table->boolean('is_displayed')->default(false);
             $table->string('ward')->nullable();

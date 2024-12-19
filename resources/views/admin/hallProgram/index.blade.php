@@ -14,10 +14,10 @@
                         <li class="breadcrumb-item">
                             <a href="{{route('admin.hallProgram.index')}}</a>
                         </li>
-                        <li class="breadcrumb-item active">सूचना </li>
+                        <li class="breadcrumb-item active">हल कार्यक्रम </li>
                     </ol>
                 </div>
-                <h4 class="page-title">सूचना</h4>
+                <h4 class="page-title">हल कार्यक्रम</h4>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="header-title mb-0">सूचनाहरु</h4>
+                        <h4 class="header-title mb-0">हल कार्यक्रमहरु</h4>
                         <div class="d-flex flex-wrap align-items-center">
                             @includeIf('inc.filter_form')
                             @can('notice_create')
@@ -43,51 +43,53 @@
                             <thead>
                             <tr>
                                 <th>क्र.स</th>
-                                <th>शिर्षक</th>
-                                <th>मिति</th>
-                                <th>होम पेजमा देखाउनु होस्</th>
+                                <th>कार्यक्रमको नाम</th>
+                                <th> कार्यक्रम मिति</th>
+                                <th>कार्यक्रमको हुने देखि</th>
+                                <th>कार्यक्रमको हुने सम्म</th>
                                 <th>स्थिति</th>
-                                <th>सूचना प्रकाशन गर्ने व्यक्ति</th>
+
                                 <th>#</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($hallPrograms as $hallPrograms)
+                            @forelse($hallPrograms as $hallProgram)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$hallPrograms->title}}</td>
-                                    <td>{{$hallPrograms->date}}</td>
+                                    <td>{{$hallProgram->program_name}}</td>
+                                    <td>{{$hallProgram->program_date}}</td>
+                                    <td>{{$hallProgram->program_time_to}}</td>
+                                    <td>{{$hallProgram->program_time_from}}</td>
                                     <td>
-                                        {{-- <a href="{{route('admin.notice.updateShowOnIndex',[$type,$notice])}}"
-                                           class="btn btn-xs btn-outline-{{$notice->show_on_index==1 ?'primary':'danger'}}">
-                                            <i class="fa  {{$notice->show_on_index==1 ?' fa-check':'fa-window-close'}}"></i>
-                                        </a> --}}
+
+                                        <form action="{{ route('admin.hallProgram.updateStatus', $hallProgram) }}" method="post" style="display: inline">
+                                            @csrf
+                                            @method('put')
+                                            <button type="submit"
+                                                    class="btn btn-xs btn-outline-{{ $hallProgram->status == 1 ? 'primary' : 'danger' }}">
+                                                <i class="fa {{ $hallProgram->status == 1 ? 'fa-check' : 'fa-window-close' }}"></i>
+
+                                            </button>
+                                        </form>
+
                                     </td>
-                                    {{-- <td>
-                                        <a href="{{route('admin.notice.updateClosedDate',[$type,$notice])}}"
-                                           class="btn btn-xs btn-outline-{{$notice->closed_at==null ?'primary':'danger'}}">
-                                            <i class="fa  {{$notice->closed_at==null ?' fa-check':'fa-window-close'}}"></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        {{$notice->user?->name}}
-                                    </td>
+
                                     <td class="d-flex gap-1">
-                                        <a data-bs-type="edit" href="{{route('admin.notice.show',[$type,$notice])}}"
+                                        <a data-bs-type="edit" href="{{route('admin.hall.show',$hallProgram)}}"
                                            class="btn btn-xs btn-outline-primary"
                                            title="विवरण हेर्नुहोस्">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        @can('notice_edit')
+                                        @can('hall_program_edit')
                                             <a data-bs-type="edit"
-                                               href="{{route('admin.notice.edit',[$type,$notice])}}"
+                                               href="{{route('admin.hallProgram.edit',$hallProgram)}}"
                                                class="btn btn-xs btn-outline-primary "
                                                title="सम्पादन गर्नुहोस्">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         @endcan
-                                        @can('notice_delete')
-                                            <form action="{{route('admin.notice.destroy',[$type,$notice])}}"
+                                        @can('hall_program_delete')
+                                            <form action="{{route('admin.hallProgram.destroy',$hallProgram)}}"
                                                   method="post">
                                                 @csrf
                                                 @method('delete')
@@ -98,7 +100,7 @@
                                                 </button>
                                             </form>
                                         @endcan
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -109,7 +111,7 @@
                         </table>
                     </div>
                     <div class="mt-2">
-                        {{ $hallPrograms->onEachSide(config('app.pagination_count'))->links() }}
+                        {{-- {{ $hallPrograms->links() }} --}}
                     </div>
                 </div>
             </div>

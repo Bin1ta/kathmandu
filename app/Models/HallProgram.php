@@ -18,7 +18,7 @@ class HallProgram extends Model
         'program_date',
         'program_time_to',
         'program_time_from',
-        'remark',
+        'remarks',
         'user_id',
         'status',
         'is_displayed',

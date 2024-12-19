@@ -12,12 +12,12 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{route('admin.hallProgram.index')}}">सूचना </a>
+                            <a href="{{route('admin.hallProgram.index')}}">हल कार्यक्रम </a>
                         </li>
-                        <li class="breadcrumb-item active">नयाँ सूचना थप्नुहोस्</li>
+                        <li class="breadcrumb-item active">नयाँ हल कार्यक्रम थप्नुहोस्</li>
                     </ol>
                 </div>
-                <h4 class="page-title">सूचना </h4>
+                <h4 class="page-title">हल कार्यक्रम </h4>
             </div>
         </div>
     </div>
@@ -27,13 +27,22 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <h4 class="header-title">सूचना थप्नुहोस्</h4>
+                        <h4 class="header-title">हल कार्यक्रम थप्नुहोस्</h4>
                         <a href="{{route('admin.hallProgram.index')}}" class="btn btn-sm btn-outline-primary">
-                            <i class="fa fa-list"></i> सूचना सूची
+                            <i class="fa fa-list"></i> हल कार्यक्रम सूची
                         </a>
                     </div>
                 </div>
                 <div class="card-body">
+                    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                     <form action="{{route('admin.hallProgram.store')}}" method="post"
                           enctype="multipart/form-data">
                         @csrf
@@ -115,11 +124,11 @@
                                 </div>
 
                                 <div class="col-md-4 mb-2">
-                                    <label for="branch_id" class="form-label"> हल</label>
-                                    <select name="branch_id" id="branch_id" class="form-select @error('branch_id') is-invalid @enderror">
+                                    <label for="hall_id" class="form-label"> हल</label>
+                                    <select name="hall_id" id="hall_id" class="form-select @error('hall_id') is-invalid @enderror">
                                         <option value="">हल छान्नुहोस्</option>
                                         @foreach ($halls as $hall)
-                                            <option value="{{ $hall->id }}" {{ old('hall_id') == $hall->id ? 'selected':'' }}>{{ $hall->title }}</option>
+                                            <option value="{{ $hall->id }}" {{ old('hall_id') == $hall->id ? 'selected':'' }}>{{ $hall->service }}</option>
                                         @endforeach
 
                                     </select>

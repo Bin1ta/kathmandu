@@ -66,4 +66,5 @@ Route::prefix('systemSetting')->as('systemSetting.')->group(function () {
 Route::put('popUpSetting/{popUpSetting}/updateStatus', [PopUpController::class, 'updateStatus'])->name('popUpSetting.updateStatus');
 Route::resource('popUpSetting', PopUpController::class);
 Route::resource('hallProgram', HallProgramController::class);
+Route::put('hallProgram/{hallProgram}/updateStatus', [HallProgramController::class, 'updateStatus'])->name('hallProgram.updateStatus');
 
