@@ -83,6 +83,17 @@
                 </li>
                 <li class="{{ request()->routeIs('admin.header.*') ? 'active' : '' }}">
                     <a href="{{ route('admin.header.index') }}">
+                </li>
+                @can('hall_access')
+                <li class="{{request()->routeIs('admin.hall.*') ? 'active' : ''}}">
+                    <a href="{{route('admin.hall.index')}}">
+                        <i class="fas fa-home"></i>
+                        <span> हल</span>
+                    </a>
+                </li>
+                @endcan
+                <li class="{{request()->routeIs('admin.header.*') ? 'active' : ''}}">
+                    <a href="{{route('admin.header.index')}}">
                         <i class="fas fa-file"></i>
                         <span>हेडर</span>
                     </a>
