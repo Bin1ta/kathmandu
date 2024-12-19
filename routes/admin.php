@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\Admin\FileUploadController;
+use App\Http\Controllers\Admin\HallController;
 use App\Http\Controllers\Admin\HeaderController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\OfficeSettingController;
@@ -30,6 +31,7 @@ Route::post('file-upload/chunkStore', [FileUploadController::class, 'chunkFileSt
 Route::resource('video', VideoController::class);
 Route::put('video/{video}/updateVideoStatus', [VideoController::class, 'updateVideoStatus'])->name('video.updateStatus');
 Route::resource('branch', BranchController::class);
+Route::resource('hall', HallController::class);
 Route::resource('citizenCharter', CitizenCharterController::class);
 Route::resource('header', HeaderController::class);
 Route::resource('revenue', RevenueController::class);
