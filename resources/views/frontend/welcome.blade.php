@@ -7,13 +7,13 @@
         <section class="notice mt-1">
             <div class="row">
                 <div class="col-md-8">
-                    <div>
-                        <h2 class="heading text-white px-1 text-center">हल कार्यक्रमहरु</h2>
+                    <div style="height: 350px;">
+                        <h2 class="heading text-white  text-center">हल कार्यक्रमहरु</h2>
                         {{-- <x-frontend.citizen-charter-component /> --}}
                         <x-frontend.hall-program-component />
                     </div>
-                    <div class="table-2">
-                        <h2 class="heading text-center text-white">हल </h2>
+                    <div class="table-2" style="height: 500px;">
+                        <h2 class="heading text-center text-white">राष्ट्रिय सभागृहको हलभाडा </h2>
                         <x-frontend.hall-component />
                     </div>
                     {{-- <div class="table-2">
