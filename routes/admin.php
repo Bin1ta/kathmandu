@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\Admin\FileUploadController;
+use App\Http\Controllers\Admin\HallProgramController;
 use App\Http\Controllers\Admin\HallController;
 use App\Http\Controllers\Admin\HallDetailController;
 use App\Http\Controllers\Admin\HeaderController;
@@ -68,4 +69,6 @@ Route::prefix('systemSetting')->as('systemSetting.')->group(function () {
 
 Route::put('popUpSetting/{popUpSetting}/updateStatus', [PopUpController::class, 'updateStatus'])->name('popUpSetting.updateStatus');
 Route::resource('popUpSetting', PopUpController::class);
+Route::resource('hallProgram', HallProgramController::class);
+Route::put('hallProgram/{hallProgram}/updateStatus', [HallProgramController::class, 'updateStatus'])->name('hallProgram.updateStatus');
 

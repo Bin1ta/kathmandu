@@ -8,13 +8,14 @@
             <div class="row">
                 <div class="col-md-8">
                     <div>
-                        <h2 class="heading text-white px-1 text-center">नागरिक वडापत्र</h2>
-                        <x-frontend.citizen-charter-component />
+                        <h2 class="heading text-white px-1 text-center">हल कार्यक्रमहरु</h2>
+                        {{-- <x-frontend.citizen-charter-component /> --}}
+                        <x-frontend.hall-program-component />
                     </div>
-                    <!-- <div class="table-2">
-                                <h2 class="heading">करका दायराहरु</h2>
-                                <x-frontend.revenue-component/>
-                            </div> -->
+                    <div class="table-2">
+                        <h2 class="heading">करका दायराहरु</h2>
+                        <x-frontend.revenue-component />
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="row">

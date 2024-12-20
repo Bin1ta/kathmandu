@@ -1,22 +1,16 @@
 <?php
 
-namespace App\View\Components\Frontend;
+namespace App\View\Components\frontend;
 
-use App\Models\CitizenCharter;
 use App\Models\HallProgram;
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
-use LaravelIdea\Helper\App\Models\_IH_CitizenCharter_C;
 
-class CitizenCharterComponent extends Component
+class hallProgramComponent extends Component
 {
-    /**
-     * @var CitizenCharter[]|\Illuminate\Database\Eloquent\Builder[]|Collection|_IH_CitizenCharter_C|\LaravelIdea\Helper\App\Models\_IH_CitizenCharter_QB[]
-     */
-    public _IH_CitizenCharter_C|array|Collection $hallPrograms;
 
+    public $hallPrograms;
     /**
      * Create a new component instance.
      */
@@ -39,6 +33,6 @@ class CitizenCharterComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.frontend.citizen-charter-component');
+        return view('components.frontend.hall-program-component');
     }
 }
