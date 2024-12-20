@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div>
-                        <h2 class="heading text-white px-1 text-center">नागरिक वडापत्र</h2>
+                        <h2 class="heading text-white px-1 text-center">हल कार्यक्रमहरु</h2>
                         <x-frontend.citizen-charter-component />
                     </div>
                     <!-- <div class="table-2">

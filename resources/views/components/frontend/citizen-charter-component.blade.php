@@ -2,44 +2,44 @@
     <thead>
         <tr>
             <th width="5%">क्र.सं.</th>
-            @if (!empty($ward))
-                <th scope="col">शाखा</th>
-            @endif
-
-            <th width="10%">सेवा</th>
-            <th width="55%">आवश्यक कागजातहरु</th>
-            <th width="15%">सेवा शुल्क</th>
-            <th width="15%">लाग्ने समय</th>
-            @if (!empty($ward))
-                <th scope="col">जिम्मेवार व्यक्ति</th>
-            @endif
-
+            <th width="22%">कार्यक्रम आयोजकको नाम</th>
+            <th width="30%">कार्यक्रम विवरण</th>
+            <th width="15%">कार्यक्रम मिति</th>
+            <th colspan="2" width="20%">कार्यक्रम हुने समय</th>
+            <th>कैफियत</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th width="10%">देखि </th>
+            <th width="10%">सम्म</th>
+            <th></th>
         </tr>
     </thead>
 </table>
+
 <div id="scroll">
     <table class="table table-success table-bordered">
         <tbody class="align-top">
-            @foreach ($citizenCharters as $citizenCharter)
+            @foreach ($hallPrograms as $hallProgram)
                 <tr>
-                    <th class="text-start" width="6%">{{ get_nepali_number($loop->iteration) }}</th>
-                    @if (!empty($ward))
-                        <td>{{ $citizenCharter->branch?->title ?? '' }}</td>
-                    @endif
-                    <td class="text-start" width="10%">{{ $citizenCharter->service }}</td>
-                    <td class="text-start" width="55%">
-                        {!! nl2br(e($citizenCharter->required_document)) !!}
-                    </td>
-                    <td class="text-start" width="15%">{{ $citizenCharter->amount }}</td>
-                    <td class="text-start" width="15%">{{ $citizenCharter->time }}</td>
-                    @if (!empty($ward))
-                        <td class="text-start">{{ $citizenCharter->responsible_person }}</td>
-                    @endif
+                    <th class="text-start" width="4%">{{ get_nepali_number($loop->iteration) }}</th>
+
+                    <td class="text-start" width="22%">{{ $hallProgram->program_name }}</td>
+                    <td class="text-start" width="28%">{{ $hallProgram->program_detail }}</td>
+                    <td class="text-start" width="15%">{{ $hallProgram->program_date }}</td>
+
+                    <td class="text-start" width="11%">{{ $hallProgram->program_time_to }}</td>
+                    <td class="text-start" width="11%">{{ $hallProgram->program_time_from }}</td>
+                    <td class="text-start" width="15%">{{ $hallProgram->remarks }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
 @push('scripts')
     <script type="text/javascript">
         (function($) {
