@@ -75,7 +75,7 @@
                                     </td>
 
                                     <td class="d-flex gap-1">
-                                        <a data-bs-type="edit" href="{{route('admin.hall.show',$hallProgram)}}"
+                                        <a data-bs-type="edit" href="{{route('admin.hallProgram.show',$hallProgram)}}"
                                            class="btn btn-xs btn-outline-primary"
                                            title="विवरण हेर्नुहोस्">
                                             <i class="fa fa-eye"></i>

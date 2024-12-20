@@ -30,7 +30,7 @@ class UpdateHallProgramRequest extends FormRequest
             'program_time_to'=>['required','string'],
             'program_time_from'=>['required','string'],
             'remarks'=>['nullable','string'],
-            'status'=>['required','boolean'],
+            'status'=>['nullable','boolean'],
             'ward' => ['nullable', 'array'],
             'ward.*' => ['integer'],
             'is_displayed' => ['nullable', 'boolean'],

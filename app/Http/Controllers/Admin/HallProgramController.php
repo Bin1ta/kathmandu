@@ -64,7 +64,8 @@ class HallProgramController extends Controller
     {
         $this->checkAuthorization('hall_program_edit');
         $hallProgram->load('hall');
-        return view('admin.hallProgram.edit', compact('hallProgram'));
+        $halls=Hall::latest()->get();
+        return view('admin.hallProgram.edit', compact('hallProgram','halls'));
     }
 
     /**
