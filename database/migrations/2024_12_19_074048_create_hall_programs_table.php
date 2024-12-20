@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('hall_programs', function (Blueprint $table) {
             $table->id();
             $table->string('program_name');
-            $table->string('program_detail');
+            $table->longText('program_detail');
             $table->string('program_date');
             $table->string('program_time_to');
             $table->string('program_time_from');

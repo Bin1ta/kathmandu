@@ -52,7 +52,7 @@
                             </legend>
                             <div class="row">
                                 <div class="col-md-6 mb-2">
-                                    <label for="title" class="form-label"> कार्यक्रमको नाम *</label>
+                                    <label for="title" class="form-label"> कार्यक्रम आयोजकको नाम*</label>
                                     <input
                                             type="text"
                                             name="program_name"
@@ -169,11 +169,11 @@
                                 </div>
 
                                 <div class="col-md-12 mb-2">
-                                    <label for="remark" class="form-label">कैफियत</label>
-                                    <textarea name="remark" id="remark" placeholder="कैफियत"
+                                    <label for="remarks" class="form-label">कैफियत</label>
+                                    <textarea name="remarks" id="remarks" placeholder="कैफियत"
                                               class="form-control summernote" cols="30"
-                                              rows="5">{{old('remark')}}</textarea>
-                                    @error('remark')
+                                              rows="5">{{old('remarks')}}</textarea>
+                                    @error('remarks')
                                     <div class="invalid-feedback">{{$message}}</div>
                                     @enderror
                                 </div>
