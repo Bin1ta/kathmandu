@@ -59,8 +59,8 @@
                                 <td>{{ $hall->time }}</td>
                                 <td>
                                     <a href="{{route('admin.hall.updateStatus',$hall)}}"
-                                       class="btn btn-xs btn-outline-{{$hall->status==null ?'primary':'danger'}}">
-                                        <i class="fa  {{$hall->status==null ?' fa-check':'fa-window-close'}}"></i>
+                                       class="btn btn-xs btn-outline-{{$hall->status==null ?'danger':'primary'}}">
+                                        <i class="fa  {{$hall->status==null ?' fa-window-close':'fa-check'}}"></i>
                                     </a>
                                 </td>
                                 <td>

@@ -84,7 +84,7 @@ class HallController extends Controller
     public function updateStatus(Hall $hall): RedirectResponse
     {
         $hall->update([
-            'status' => !empty($hall->status) ? null : now(),
+            'status' => !$hall->status,
         ]);
         toast('स्थिति सफलतापूर्वक अद्यावधिक गरियो', 'success');
 

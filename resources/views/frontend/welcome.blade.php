@@ -13,9 +13,13 @@
                         <x-frontend.hall-program-component />
                     </div>
                     <div class="table-2">
+                        <h2 class="heading text-center text-white">हल </h2>
+                        <x-frontend.hall-component />
+                    </div>
+                    {{-- <div class="table-2">
                         <h2 class="heading">करका दायराहरु</h2>
                         <x-frontend.revenue-component />
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-4">
                     <div class="row">
