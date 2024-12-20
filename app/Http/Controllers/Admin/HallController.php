@@ -81,4 +81,13 @@ class HallController extends Controller
 
         return back();
     }
+    public function updateStatus(Hall $hall): RedirectResponse
+    {
+        $hall->update([
+            'status' => !empty($hall->status) ? null : now(),
+        ]);
+        toast('स्थिति सफलतापूर्वक अद्यावधिक गरियो', 'success');
+
+        return back();
+    }
 }

@@ -86,6 +86,15 @@
                         <span> हल</span>
                     </a>
                 </li>
+                </li>
+                @endcan
+                @can('hall_detail_access')
+                <li class="{{request()->routeIs('admin.hallDetail.*') ? 'active' : ''}}">
+                    <a href="{{route('admin.hallDetail.index')}}">
+                        <i class="fa fa-info-circle"></i>
+                        <span> हल विवरण</span>
+                    </a>
+                </li>
                 @endcan
                 <li class="{{request()->routeIs('admin.header.*') ? 'active' : ''}}">
                     <a href="{{route('admin.header.index')}}">

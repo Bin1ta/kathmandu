@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\Admin\FileUploadController;
 use App\Http\Controllers\Admin\HallController;
+use App\Http\Controllers\Admin\HallDetailController;
 use App\Http\Controllers\Admin\HeaderController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\OfficeSettingController;
@@ -32,6 +33,7 @@ Route::resource('video', VideoController::class);
 Route::put('video/{video}/updateVideoStatus', [VideoController::class, 'updateVideoStatus'])->name('video.updateStatus');
 Route::resource('branch', BranchController::class);
 Route::resource('hall', HallController::class);
+Route::resource('hallDetail', HallDetailController::class);
 Route::resource('citizenCharter', CitizenCharterController::class);
 Route::resource('header', HeaderController::class);
 Route::resource('revenue', RevenueController::class);
@@ -42,6 +44,8 @@ Route::get('employee/{employee}/updateEmployeeStatus', [EmployeeController::clas
 Route::resource('employee', EmployeeController::class);
 
 Route::resource('{type}/notice', NoticeController::class);
+Route::get('hallDetail/{hallDetail}/hallDetailUpdate',[HallDetailController::class,'updateStatus'])->name('hallDetail.updateStatus');
+Route::get('hall/{hall}/hallUpdate',[HallController::class,'updateStatus'])->name('hall.updateStatus');
 Route::get('{type}/notice/{notice}/noticeUpdate', [NoticeController::class, 'updateClosedDate'])->name('notice.updateClosedDate');
 Route::get('{type}/notice/{notice}/updateShowOnIndex', [NoticeController::class, 'updateShowOnIndex'])->name('notice.updateShowOnIndex');
 

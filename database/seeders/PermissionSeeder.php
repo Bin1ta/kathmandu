@@ -51,6 +51,10 @@ class PermissionSeeder extends Seeder
             'hall_create',
             'hall_edit',
             'hall_delete',
+            'hall_detail_access',
+            'hall_detail_edit',
+            'hall_detail_delete',
+            'hall_detail_create',
 
 
         ];

@@ -15,10 +15,10 @@
                         <li class="breadcrumb-item">
                             <a href="{{route('admin.dashboard')}}">डिजिटल बोर्ड</a>
                         </li>
-                        <li class="breadcrumb-item active">हल</li>
+                        <li class="breadcrumb-item active">हल विवरण</li>
                     </ol>
                 </div>
-                <h4 class="page-title">हलहरु</h4>
+                <h4 class="page-title">हल विवरणहरु</h4>
             </div>
         </div>
     </div>
@@ -28,9 +28,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="header-title mb-0">हल</h4>
+                        <h4 class="header-title mb-0">हल विवरण</h4>
                         <div class="d-flex flex-wrap align-items-center">
-                                <a href="{{route('admin.hall.create')}}"
+                                <a href="{{route('admin.hallDetail.create')}}"
                                    class="btn btn-sm btn-outline-primary waves-effect waves-light">
                                     <i class="fa fa-plus-circle"></i> नयाँ थप्नुहोस्</a>
                         </div>
@@ -41,33 +41,26 @@
                     <thead>
                         <tr>
                             <th>क्र.स</th>
-                            <th>सेवा</th>
-                            <th>कार्यक्रम समय</th>
-                            <th>शुल्क</th>
-                            <th>समय</th>
+                            <th>शिर्षक</th>
                             <th>स्थिति</th>
                             <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($halls as $hall)
+                        @foreach ($hallDetails as $hallDetail)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $hall->service }}</td>
-                                <td>{{ $hall->program_time }}</td>
-                                <td>{{ $hall->rate }}</td>
-                                <td>{{ $hall->time }}</td>
+                                <td>{{ $hallDetail->title }}</td>
                                 <td>
-                                    <a href="{{route('admin.hall.updateStatus',$hall)}}"
-                                       class="btn btn-xs btn-outline-{{$hall->status==null ?'primary':'danger'}}">
-                                        <i class="fa  {{$hall->status==null ?' fa-check':'fa-window-close'}}"></i>
+                                    <a href="{{route('admin.hallDetail.updateStatus',$hallDetail)}}"
+                                       class="btn btn-xs btn-outline-{{$hallDetail->status==null ?'primary':'danger'}}">
+                                        <i class="fa  {{$hallDetail->status==null ?' fa-check':'fa-window-close'}}"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.hall.edit', $hall) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit" title="सम्पादन गर्नुहोस"></i></a>
-                                    <a href="{{ route('admin.hall.show', $hall) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"  title="पुरा विवरण">
-                                        </i></a>
-                                    <form action="{{ route('admin.hall.destroy', $hall) }}" method="POST" style="display:inline-block;">
+                                    <a href="{{ route('admin.hallDetail.edit', $hallDetail) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit" title="सम्पादन गर्नुहोस"></i></a>
+
+                                    <form action="{{ route('admin.hallDetail.destroy', $hallDetail) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button data-bs-type="delete"
